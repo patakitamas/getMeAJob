@@ -1,0 +1,583 @@
+{
+  "id": "40f58f3c-b60c-4bed-9a9e-ea7fe4f43d24",
+  "version": "2.0",
+  "name": "Schonherz",
+  "url": "schonherz.hu",
+  "tests": [{
+    "id": "b98903df-eefe-41a9-9d06-b7e658ba63b8",
+    "name": "Apply",
+    "commands": [{
+      "id": "3f192a27-c818-4d45-8936-9e7447cfbc47",
+      "comment": "",
+      "command": "open",
+      "target": "https://schonherz.hu/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "effb0cf0-8f52-47d2-94e9-bd5fc4a1ced4",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "css=.col-md-6:nth-child(1) polygon",
+      "targets": [
+        ["css=.col-md-6:nth-child(1) polygon", "css:finder"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "6edf0d2c-a5fe-482d-b284-35d674413e2e",
+      "comment": "",
+      "command": "waitForElementPresent",
+      "target": "css=.btn-small",
+      "targets": [
+        ["css=.btn-small", "css:finder"],
+        ["xpath=//input[@value='Tovább']", "xpath:attributes"],
+        ["xpath=//div[@id='login-btn']/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "a1a7889a-4775-4511-bdb9-179d13ef2924",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=.btn-small",
+      "targets": [
+        ["css=.btn-small", "css:finder"],
+        ["xpath=//input[@value='Tovább']", "xpath:attributes"],
+        ["xpath=//div[@id='login-btn']/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": "btnText"
+    }, {
+      "id": "44b90e53-ce28-4456-9431-ddf5e184acb2",
+      "comment": "",
+      "command": "if",
+      "target": "${btnText} == \"Tovább\"",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "24924119-8b35-4f66-8a7e-4de40be83405",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-small",
+      "targets": [
+        ["css=.btn-small", "css:finder"],
+        ["xpath=//input[@value='Tovább']", "xpath:attributes"],
+        ["xpath=//div[@id='login-btn']/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ab99363f-dbd5-4886-a896-f4988fac8d60",
+      "comment": "",
+      "command": "echo",
+      "target": "Logged in",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4850da88-a3b8-4523-b2b5-ba8cf3cbaf82",
+      "comment": "",
+      "command": "else",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "47a968c5-364c-4e32-8b71-882390f07cf8",
+      "comment": "",
+      "command": "echo",
+      "target": "Already logged in",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ba03e195-224c-470a-a9b9-cfc30602108e",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9ae84069-450d-4cd5-a5d1-b3c21e609771",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-6:nth-child(1) polygon",
+      "targets": [
+        ["css=.col-md-6:nth-child(1) polygon", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "1377d9cd-aad9-4083-bd67-e944b1d8788e",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "css=.col-md-4:nth-child(1) polygon",
+      "targets": [
+        ["css=.col-md-4:nth-child(1) polygon", "css:finder"]
+      ],
+      "value": "30000"
+    }, {
+      "id": "b7e94343-0675-4c7a-a3be-2774b92d49f9",
+      "comment": "",
+      "command": "store",
+      "target": "1",
+      "targets": [],
+      "value": "child"
+    }, {
+      "id": "5bbf3524-5bf9-4e1f-8c6e-57002d8f2617",
+      "comment": "",
+      "command": "while",
+      "target": "${child} <= 9",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f177729b-7dab-4507-9994-c6b0eda22629",
+      "comment": "",
+      "command": "if",
+      "target": "${child} == 4",
+      "targets": [
+        ["css=.col-md-4:nth-child(7) polygon", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "89169859-e504-4040-8432-2510018bef64",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return parseInt(${child}) + 2;",
+      "targets": [],
+      "value": "child"
+    }, {
+      "id": "2e912b77-cf59-4796-8014-8bdcd14bd23e",
+      "comment": "",
+      "command": "elseIf",
+      "target": "${child} == 5 || ${child} == 7",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fd6fb05f-ffb0-45b5-b310-530dada7bf85",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return parseInt(${child}) + 1;",
+      "targets": [],
+      "value": "child"
+    }, {
+      "id": "7d8b7615-dcf9-414e-aea5-f0ee43b8340c",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fcccddc9-94b0-4f79-916b-5dda3d96bac4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-4:nth-child(${child}) polygon",
+      "targets": [
+        ["css=.col-md-4:nth-child(2) polygon", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "ad5882a8-a67f-4cb0-8253-6cec3bbc97d2",
+      "comment": "",
+      "command": "store",
+      "target": "1",
+      "targets": [],
+      "value": "findTotal"
+    }, {
+      "id": "7b2e9fd4-4695-489d-817c-d74a1a07945c",
+      "comment": "",
+      "command": "while",
+      "target": "${findTotal} < 6",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b92b25dc-13f2-4e4f-a90e-8e49aad3ec61",
+      "comment": "",
+      "command": "executeScript",
+      "target": "window.scrollBy(0, 1000)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "73e860e3-8764-4e91-8b2a-6bdc417fd67a",
+      "comment": "",
+      "command": "pause",
+      "target": "1000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e2164c22-0f20-4446-a411-36e087a66df5",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return parseInt(${findTotal}) + 1;",
+      "targets": [],
+      "value": "findTotal"
+    }, {
+      "id": "82b47ae1-6e52-4e9b-afd1-53a89dd78178",
+      "comment": "",
+      "command": "echo",
+      "target": "scrolls: ${findTotal}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fa2a7205-22d8-43cf-b065-4d9d018c7828",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2481bd1c-2bcd-4e0f-85cd-c92409f108aa",
+      "comment": "",
+      "command": "executeScript",
+      "target": "window.scrollBy(0, -10000)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d2746374-5d3a-4ac1-8124-fce8efc684be",
+      "comment": "",
+      "command": "storeXpathCount",
+      "target": "xpath=//div[@class=\"col-md-8\"]",
+      "targets": [],
+      "value": "totalJobs"
+    }, {
+      "id": "207ca815-fb48-49a1-b290-900efdb3354e",
+      "comment": "",
+      "command": "echo",
+      "target": "total jobs: ${totalJobs}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "50d64527-89c4-4f5e-9a04-39e203053c72",
+      "comment": "",
+      "command": "store",
+      "target": "1",
+      "targets": [],
+      "value": "index"
+    }, {
+      "id": "4c17aa2d-449b-41ec-9a05-7fd739909b9f",
+      "comment": "",
+      "command": "store",
+      "target": "<undefined>",
+      "targets": [],
+      "value": "jobName"
+    }, {
+      "id": "d3d993db-4819-4360-b644-e50d9d6ffc12",
+      "comment": "",
+      "command": "store",
+      "target": "true",
+      "targets": [],
+      "value": "shouldContinue"
+    }, {
+      "id": "ab89e822-79de-4047-badb-1ff6e19e5c71",
+      "comment": "",
+      "command": "while",
+      "target": "${index} < ${totalJobs} && ${shouldContinue} == \"true\"",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0f503889-31b9-429b-8f43-26427daee0fe",
+      "comment": "",
+      "command": "if",
+      "target": "${index} == 11",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "68b1abb3-9e0f-4d54-8bd7-2f4594f31534",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return parseInt(${index}) + 1;",
+      "targets": [],
+      "value": "index"
+    }, {
+      "id": "cd976b0b-6c36-4c04-86a5-7cd0386357ca",
+      "comment": "",
+      "command": "echo",
+      "target": "Az index osztható ${index}-el",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a5b99fc1-cb64-402c-a3bd-010d4da257f3",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "023a5dc5-1c6d-4447-8438-8ea58e76134a",
+      "comment": "",
+      "command": "//waitForElementVisible",
+      "target": "css=.col-md-8:nth-child(${index}) polygon",
+      "targets": [],
+      "value": "10000"
+    }, {
+      "id": "21e8e49f-ceba-4ba4-942b-f11940c59cdf",
+      "comment": "",
+      "command": "pause",
+      "target": "2000",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "23c1c240-c01c-494e-a91d-c3ba809bd3da",
+      "comment": "",
+      "command": "executeScript",
+      "target": "window.scrollBy(0, -20);",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e3f9d80e-e955-464b-9ecf-67b831f7f67d",
+      "comment": "",
+      "command": "executeScript",
+      "target": "var idx = ${index}; var xpath = \"(//div[contains(@class, 'col-md-8')]//h4/a)[\" + idx + \"]\"; var el = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; return el ? el.textContent.trim() : 'NOT FOUND';",
+      "targets": [],
+      "value": "jobName"
+    }, {
+      "id": "49e99d7a-552b-456c-bdac-d4326a06a2d0",
+      "comment": "",
+      "command": "executeScript",
+      "target": "function normalize(str) {   return str.normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\").toLowerCase(); } var keywords = ['román', 'cseh', 'czech', 'szlovák', 'kínai', 'chine', 'koreai', 'french', 'german', 'francia', 'német', 'bolgár', 'bulgár', 'svéd', 'holland', 'albán', 'olasz', 'horvát', 'szerb', 'ukrán', 'orosz', 'konyha', 'séf', 'felszolgáló', 'runner', 'mosogató', 'hr', 'legal', 'jogi']; var name = normalize(${jobName}); return keywords.some(k => name.includes(normalize(k)));",
+      "targets": [],
+      "value": "isMatch"
+    }, {
+      "id": "42d08343-2c53-441c-bd04-7f90dd0d19fd",
+      "comment": "",
+      "command": "if",
+      "target": "${isMatch} == true",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bc5bc79b-70a4-4b8c-a984-046013cceb16",
+      "comment": "",
+      "command": "echo",
+      "target": "skipped, nyelvtudást igénylő munka: ${jobName}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f1aa9376-7cb4-4cd5-a87e-e14d98f11da6",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return parseInt(${index}) + 1;",
+      "targets": [],
+      "value": "index"
+    }, {
+      "id": "5ad4a145-b4f9-4c69-9f24-5c366e642b86",
+      "comment": "",
+      "command": "else",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e5c72158-b608-43fc-9917-7000938f4fcb",
+      "comment": "",
+      "command": "echo",
+      "target": "${jobName}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "48b731d0-ab87-495a-961b-1633ca681bc9",
+      "comment": "",
+      "command": "if",
+      "target": "${jobName} == 'NOT FOUND'",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6c2369b9-0473-4fdf-bb8f-e95e63dedf8b",
+      "comment": "",
+      "command": "store",
+      "target": "false",
+      "targets": [],
+      "value": "shouldContinue"
+    }, {
+      "id": "f1fbdfd2-c95d-44ea-a17d-025ce49d9cd9",
+      "comment": "",
+      "command": "elseIf",
+      "target": "${isMatch} != true",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "14657da9-f405-4d07-94a3-809d56cc87a9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-md-8:nth-child(${index}) polygon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "47e5c93e-2907-437b-b9a4-9c49cb4bddf6",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return document.querySelector('.warning') !== null;",
+      "targets": [],
+      "value": "warningExists"
+    }, {
+      "id": "4129ba27-02db-464e-98a3-448aa0abb280",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return parseInt(${index}) + 1;",
+      "targets": [],
+      "value": "index"
+    }, {
+      "id": "c93a91f8-d3cd-425f-9c7c-851f6f829680",
+      "comment": "",
+      "command": "if",
+      "target": "${warningExists}",
+      "targets": [
+        ["css=.warning", "css:finder"],
+        ["xpath=//div[@id='ad-details']/div[4]/span", "xpath:idRelative"],
+        ["xpath=//div[4]/span", "xpath:position"],
+        ["xpath=//span[contains(.,' Erre a hírdetésre már jelentkeztél.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7f2249a5-1016-4e24-b7b2-50585b81b352",
+      "comment": "",
+      "command": "echo",
+      "target": "index: ${index}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6a8c49cd-1566-4f70-b2cf-f5cf19b1a468",
+      "comment": "",
+      "command": "executeScript",
+      "target": "window.scrollBy(0, 10000)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e55a0321-0398-484d-831d-35a6058e76db",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.history.back()",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6e2e65ba-19c6-4bde-99cc-6dac05c12cfd",
+      "comment": "",
+      "command": "else",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bcb1b2c0-be45-405f-b33a-7f8d270aa039",
+      "comment": "",
+      "command": "executeScript",
+      "target": "window.scrollBy(0, 10000)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d1ca57ee-f10c-484e-bc29-0098eda5f1a3",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Jelentkezek",
+      "targets": [
+        ["linkText=Jelentkezek", "linkText"],
+        ["css=.apply", "css:finder"],
+        ["xpath=//a[contains(text(),'Jelentkezek')]", "xpath:link"],
+        ["xpath=//div[@id='ad-details']/div[2]/a", "xpath:idRelative"],
+        ["xpath=//div[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Jelentkezek')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6287a106-324f-433f-afab-a3b09c87318c",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return parseInt(${index}) + 1;",
+      "targets": [],
+      "value": "index"
+    }, {
+      "id": "a668d6b1-0aaa-4363-9fe5-5c43ea5bf908",
+      "comment": "",
+      "command": "echo",
+      "target": "index: ${index}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "81e85d34-8408-4912-941c-eedc64616e08",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.history.back()",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f43a7ea7-14f4-43b6-8326-ee9199ce9cf7",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.history.back()",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6de810ff-f69c-4504-9f3e-28ea0afcc221",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b43069b8-9c11-404a-ad67-f26ed6448da7",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f356594e-d82b-4508-8add-17f9d0ca0ba7",
+      "comment": "",
+      "command": "//runScript",
+      "target": "window.history.back()",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8724a3f7-fba3-429a-8b72-091b188deeaf",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "52141f02-11cf-4afc-afa2-45a3bba040fc",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollBy(0, ${index} % 2 * 80)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c0ee2691-0dea-4e7d-846e-5fb295bae7ce",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "55520e71-7f64-45ba-9ee9-b0a71592b02d",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return parseInt(${child}) + 1;",
+      "targets": [],
+      "value": "child"
+    }, {
+      "id": "1453c45c-f675-43f9-b592-a3a050c5cbde",
+      "comment": "",
+      "command": "echo",
+      "target": "munkatípus száma: ${child}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8c50c645-6e04-4433-941e-b9a39756c572",
+      "comment": "",
+      "command": "executeScript",
+      "target": "window.history.back()",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "17e7792d-e5bb-4d71-a92a-daabea05ffcb",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "bbd37196-efed-4412-807d-9dcea9e73135",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["b98903df-eefe-41a9-9d06-b7e658ba63b8"]
+  }],
+  "urls": [],
+  "plugins": []
+}
