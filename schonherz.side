@@ -37,21 +37,21 @@
     }, {
       "id": "a1a7889a-4775-4511-bdb9-179d13ef2924",
       "comment": "",
-      "command": "storeText",
-      "target": "css=.btn-small",
-      "targets": [
-        ["css=.btn-small", "css:finder"],
-        ["xpath=//input[@value='Tovább']", "xpath:attributes"],
-        ["xpath=//div[@id='login-btn']/div/div/input", "xpath:idRelative"],
-        ["xpath=//div[2]/div/div/input", "xpath:position"]
-      ],
+      "command": "executeScript",
+      "target": "return document.querySelector('.btn-small').value;",
+      "targets": [],
       "value": "btnText"
     }, {
       "id": "44b90e53-ce28-4456-9431-ddf5e184acb2",
       "comment": "",
       "command": "if",
       "target": "${btnText} == \"Tovább\"",
-      "targets": [],
+      "targets": [
+        ["css=.form-group:nth-child(3) .btn", "css:finder"],
+        ["xpath=//input[@value='Tovább']", "xpath:attributes"],
+        ["xpath=//div[@id='login-btn']/div/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div/input", "xpath:position"]
+      ],
       "value": ""
     }, {
       "id": "24924119-8b35-4f66-8a7e-4de40be83405",
@@ -123,6 +123,43 @@
       "comment": "",
       "command": "while",
       "target": "${child} <= 9",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f177729b-7dab-4507-9994-c6b0eda22629",
+      "comment": "",
+      "command": "if",
+      "target": "${child} == 4",
+      "targets": [
+        ["css=.col-md-4:nth-child(7) polygon", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "89169859-e504-4040-8432-2510018bef64",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return parseInt(${child}) + 2;",
+      "targets": [],
+      "value": "child"
+    }, {
+      "id": "2e912b77-cf59-4796-8014-8bdcd14bd23e",
+      "comment": "",
+      "command": "elseIf",
+      "target": "${child} == 5 || ${child} == 7",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fd6fb05f-ffb0-45b5-b310-530dada7bf85",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return parseInt(${child}) + 1;",
+      "targets": [],
+      "value": "child"
+    }, {
+      "id": "7d8b7615-dcf9-414e-aea5-f0ee43b8340c",
+      "comment": "",
+      "command": "end",
+      "target": "",
       "targets": [],
       "value": ""
     }, {
@@ -212,10 +249,24 @@
       "targets": [],
       "value": "index"
     }, {
+      "id": "4c17aa2d-449b-41ec-9a05-7fd739909b9f",
+      "comment": "",
+      "command": "store",
+      "target": "<undefined>",
+      "targets": [],
+      "value": "jobName"
+    }, {
+      "id": "d3d993db-4819-4360-b644-e50d9d6ffc12",
+      "comment": "",
+      "command": "store",
+      "target": "true",
+      "targets": [],
+      "value": "shouldContinue"
+    }, {
       "id": "ab89e822-79de-4047-badb-1ff6e19e5c71",
       "comment": "",
       "command": "while",
-      "target": "${index} <= ${totalJobs}",
+      "target": "${index} < ${totalJobs} && ${shouldContinue} == \"true\"",
       "targets": [],
       "value": ""
     }, {
@@ -268,13 +319,81 @@
       "targets": [],
       "value": ""
     }, {
+      "id": "e3f9d80e-e955-464b-9ecf-67b831f7f67d",
+      "comment": "",
+      "command": "executeScript",
+      "target": "var idx = ${index}; var xpath = \"(//div[contains(@class, 'col-md-8')]//h4/a)[\" + idx + \"]\"; var el = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue; return el ? el.textContent.trim() : 'NOT FOUND';",
+      "targets": [],
+      "value": "jobName"
+    }, {
+      "id": "49e99d7a-552b-456c-bdac-d4326a06a2d0",
+      "comment": "",
+      "command": "executeScript",
+      "target": "function normalize(str) {   return str.normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\").toLowerCase(); } var keywords = ['román', 'cseh', 'czech', 'szlovák', 'kínai', 'chine', 'koreai', 'french', 'german', 'francia', 'német', 'bolgár', 'bulgár', 'svéd', 'holland', 'albán', 'olasz', 'horvát', 'szerb', 'ukrán', 'orosz', 'konyha', 'séf', 'felszolgáló', 'runner', 'mosogató', 'hr', 'legal', 'jogi']; var name = normalize(${jobName}); return keywords.some(k => name.includes(normalize(k)));",
+      "targets": [],
+      "value": "isMatch"
+    }, {
+      "id": "42d08343-2c53-441c-bd04-7f90dd0d19fd",
+      "comment": "",
+      "command": "if",
+      "target": "${isMatch} == true",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bc5bc79b-70a4-4b8c-a984-046013cceb16",
+      "comment": "",
+      "command": "echo",
+      "target": "skipped, nyelvtudást igénylő munka: ${jobName}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f1aa9376-7cb4-4cd5-a87e-e14d98f11da6",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return parseInt(${index}) + 1;",
+      "targets": [],
+      "value": "index"
+    }, {
+      "id": "5ad4a145-b4f9-4c69-9f24-5c366e642b86",
+      "comment": "",
+      "command": "else",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e5c72158-b608-43fc-9917-7000938f4fcb",
+      "comment": "",
+      "command": "echo",
+      "target": "${jobName}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "48b731d0-ab87-495a-961b-1633ca681bc9",
+      "comment": "",
+      "command": "if",
+      "target": "${jobName} == 'NOT FOUND'",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6c2369b9-0473-4fdf-bb8f-e95e63dedf8b",
+      "comment": "",
+      "command": "store",
+      "target": "false",
+      "targets": [],
+      "value": "shouldContinue"
+    }, {
+      "id": "f1fbdfd2-c95d-44ea-a17d-025ce49d9cd9",
+      "comment": "",
+      "command": "elseIf",
+      "target": "${isMatch} != true",
+      "targets": [],
+      "value": ""
+    }, {
       "id": "14657da9-f405-4d07-94a3-809d56cc87a9",
       "comment": "",
       "command": "click",
       "target": "css=.col-md-8:nth-child(${index}) polygon",
-      "targets": [
-        ["css=.col-md-8:nth-child(1) polygon", "css:finder"]
-      ],
+      "targets": [],
       "value": ""
     }, {
       "id": "47e5c93e-2907-437b-b9a4-9c49cb4bddf6",
@@ -283,6 +402,13 @@
       "target": "return document.querySelector('.warning') !== null;",
       "targets": [],
       "value": "warningExists"
+    }, {
+      "id": "4129ba27-02db-464e-98a3-448aa0abb280",
+      "comment": "",
+      "command": "executeScript",
+      "target": "return parseInt(${index}) + 1;",
+      "targets": [],
+      "value": "index"
     }, {
       "id": "c93a91f8-d3cd-425f-9c7c-851f6f829680",
       "comment": "",
@@ -296,17 +422,17 @@
       ],
       "value": ""
     }, {
-      "id": "4129ba27-02db-464e-98a3-448aa0abb280",
-      "comment": "",
-      "command": "executeScript",
-      "target": "return parseInt(${index}) + 1;",
-      "targets": [],
-      "value": "index"
-    }, {
       "id": "7f2249a5-1016-4e24-b7b2-50585b81b352",
       "comment": "",
       "command": "echo",
       "target": "index: ${index}",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6a8c49cd-1566-4f70-b2cf-f5cf19b1a468",
+      "comment": "",
+      "command": "executeScript",
+      "target": "window.scrollBy(0, 10000)",
       "targets": [],
       "value": ""
     }, {
@@ -321,6 +447,13 @@
       "comment": "",
       "command": "else",
       "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bcb1b2c0-be45-405f-b33a-7f8d270aa039",
+      "comment": "",
+      "command": "executeScript",
+      "target": "window.scrollBy(0, 10000)",
       "targets": [],
       "value": ""
     }, {
@@ -352,6 +485,13 @@
       "targets": [],
       "value": ""
     }, {
+      "id": "81e85d34-8408-4912-941c-eedc64616e08",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.history.back()",
+      "targets": [],
+      "value": ""
+    }, {
       "id": "f43a7ea7-14f4-43b6-8326-ee9199ce9cf7",
       "comment": "",
       "command": "runScript",
@@ -359,9 +499,23 @@
       "targets": [],
       "value": ""
     }, {
+      "id": "6de810ff-f69c-4504-9f3e-28ea0afcc221",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b43069b8-9c11-404a-ad67-f26ed6448da7",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
       "id": "f356594e-d82b-4508-8add-17f9d0ca0ba7",
       "comment": "",
-      "command": "runScript",
+      "command": "//runScript",
       "target": "window.history.back()",
       "targets": [],
       "value": ""
